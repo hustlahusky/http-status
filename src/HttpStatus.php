@@ -68,7 +68,7 @@ class HttpStatus implements StatusCodeInterface
     /**
      * Array of standard HTTP status code/reason phrases.
      *
-     * @var array
+     * @var array<int, string>
      */
     private static $statusNames = [
         // Informational 1xx
@@ -144,7 +144,7 @@ class HttpStatus implements StatusCodeInterface
     /**
      * Array of standard HTTP status code/reason phrases.
      *
-     * @var array
+     * @var array<int, string>
      */
     private static $errorPhrases = [
         // Successful 2xx
@@ -215,7 +215,7 @@ class HttpStatus implements StatusCodeInterface
     /**
      * Array of standard HTTP status code/reason exceptions.
      *
-     * @var array
+     * @var array<int, class-string<\RuntimeException>>
      */
     private static $phrasesExceptions = [
         400 => BadRequestException::class,
@@ -386,6 +386,7 @@ class HttpStatus implements StatusCodeInterface
             'max_range' => self::MAXIMUM,
         ]]);
 
+        /** @phpstan-ignore-next-line */
         if ($filteredCode === false) {
             throw new InvalidArgumentException(\sprintf('The submitted code "%s" must be a positive integer between %s and %s.', $code, self::MINIMUM, self::MAXIMUM));
         }
