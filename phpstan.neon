@@ -12,7 +12,13 @@ parameters:
     level: max
     inferPrivatePropertyTypeFromConstructor: true
 
-    autoload_directories:
+    paths:
         - %currentWorkingDirectory%/src
 
     ignoreErrors:
+        - message: '#^PHPDoc type string of property Narrowspark\\HttpStatus\\Exception\\Abstract\w+ErrorException::\$message is not the same as PHPDoc type mixed of overridden property Exception::\$message.$#'
+          path: src/
+        - message: '#^Property Narrowspark\\HttpStatus\\Exception\\Abstract\w+ErrorException::\$headers type has no value type specified in iterable type array.$#'
+          path: src/
+        - message: '#^Method Narrowspark\\HttpStatus\\Exception\\Abstract\w+ErrorException::__construct\(\) has parameter \$headers with no value type specified in iterable type array.$#'
+          path: src/
